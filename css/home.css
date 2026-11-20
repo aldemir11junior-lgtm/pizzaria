@@ -1,0 +1,446 @@
+/* =========================================================
+   LANDING PAGE
+   ========================================================= */
+
+/* Animação 17 — Esteira infinita */
+.marquee { overflow: hidden; white-space: nowrap; }
+.marquee-track { display: inline-flex; gap: 3rem; animation: marquee 30s linear infinite; }
+.marquee-track.slow { animation-duration: 45s; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* ---------- HERO ---------- */
+.hero {
+  position: relative; overflow: hidden; isolation: isolate;
+  min-height: min(88vh, 760px); display: grid; align-items: center;
+  padding: 4.5rem 0 6rem;
+}
+/* Foto de fundo (p3.jpg) com zoom lento */
+.hero::before {
+  content: ""; position: absolute; inset: 0; z-index: -2;
+  background: url("../img/p3.jpg") 65% 60% / cover no-repeat;
+  will-change: transform;
+
+}
+/* Escurece o lado do texto e funde a base com o fundo da página */
+.hero::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(14, 11, 10, .96) 0%, rgba(14, 11, 10, .82) 35%, rgba(14, 11, 10, .25) 70%, rgba(14, 11, 10, .4) 100%),
+    linear-gradient(180deg, rgba(14, 11, 10, .35) 0%, transparent 30%, transparent 70%, var(--bg) 100%);
+}
+@keyframes heroZoom { from { transform: scale(1); } to { transform: scale(1.04); } }
+.hero-title, .script { text-shadow: 0 4px 25px rgba(0, 0, 0, .6); }
+.hero .hero-sub { color: #e2d6ca; }
+/* Fagulhas do forno subindo */
+.hero-embers::before, .hero-embers::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    radial-gradient(2px 2px at 20% 80%, #ffb347, transparent),
+    radial-gradient(2px 2px at 60% 90%, #ff6b3d, transparent),
+    radial-gradient(1.5px 1.5px at 80% 70%, #ffd27a, transparent),
+    radial-gradient(2px 2px at 40% 95%, #ff8a3d, transparent),
+    radial-gradient(1.5px 1.5px at 90% 85%, #ffb347, transparent),
+    radial-gradient(2px 2px at 70% 60%, #ff6b3d, transparent);
+  animation: embers 7s linear infinite;
+  will-change: transform, opacity;
+  opacity: .8;
+}
+.hero-embers::after { animation-delay: -3.5s; transform: translateX(5%); }
+@keyframes embers { from { transform: translateY(20%); opacity: 0; } 30% { opacity: .9; } to { transform: translateY(-60%); opacity: 0; } }
+
+.hero-grid { position: relative; display: grid; grid-template-columns: 1fr 1.05fr; align-items: center; gap: 2rem; }
+.script { font-family: var(--font-script); color: var(--gold); font-size: 1.5rem; animation: fadeUp .8s ease both; }
+.script.sm { font-size: 1.1rem; margin-top: .6rem; }
+
+/* Animação 21 — Cortina que revela (linhas do título) */
+.hero-title { font-family: var(--font-title); font-weight: 400; font-size: clamp(3.2rem, 7.5vw, 6.2rem); line-height: .95; margin: .6rem 0 1.2rem; letter-spacing: 1px; }
+.hero-title .line { display: block; overflow: hidden; }
+.hero-title .line > span { display: inline-block; transform: translateY(105%); animation: lineUp .9s cubic-bezier(.2, .8, .2, 1) forwards; }
+.hero-title .line:nth-child(2) > span { animation-delay: .15s; }
+.hero-title .line:nth-child(3) > span { animation-delay: .3s; }
+@keyframes lineUp { to { transform: none; } }
+
+.hero-sub { color: var(--muted); max-width: 470px; margin-bottom: 2rem; animation: fadeUp .8s .45s ease both; }
+.hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp .8s .6s ease both; }
+.hero-badge { display: flex; align-items: center; gap: .9rem; margin-top: 2.2rem; animation: fadeUp .8s .75s ease both; }
+.hero-badge .moto { font-size: 2.2rem; animation: ride 2.5s ease-in-out infinite; }
+.hero-badge strong { color: var(--gold); font-size: .9rem; display: block; }
+.hero-badge small { color: var(--muted); font-size: .8rem; }
+@keyframes ride { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(8px) rotate(-4deg); } }
+
+.hero-visual { position: relative; display: grid; place-items: center; min-height: 460px; }
+.promo-seal {
+  position: absolute; top: 0; right: 4%;
+  width: 110px; height: 110px; border-radius: 50%;
+  background: #120d0b; border: 2px dashed var(--gold);
+  display: grid; place-content: center; text-align: center; line-height: 1;
+  animation: popIn .8s 1s both, pulse 2s 2s infinite;
+}
+.promo-seal strong { font-family: var(--font-title); font-size: 2.4rem; color: var(--gold); }
+.promo-seal small { font-size: .7rem; font-weight: 600; letter-spacing: 1px; }
+.leaf { position: absolute; font-size: 2rem; animation: float 4s ease-in-out infinite; }
+.l1 { left: 4%; bottom: 14%; }
+.l2 { left: 10%; top: 10%; animation-delay: -1.2s; }
+.l3 { right: 10%; bottom: 8%; animation-delay: -2.4s; }
+
+/* ---------- Hero centralizado ---------- */
+.hero { min-height: calc(100vh - 78px); text-align: center; }
+.hero::after {
+  background:
+    radial-gradient(ellipse at center, rgba(14, 11, 10, .72) 0%, rgba(14, 11, 10, .55) 55%, rgba(14, 11, 10, .75) 100%),
+    linear-gradient(180deg, rgba(14, 11, 10, .3) 0%, transparent 30%, transparent 70%, var(--bg) 100%);
+}
+.hero-grid { grid-template-columns: 1fr; justify-items: center; }
+.hero-text { position: relative; z-index: 1; max-width: 860px; }
+.hero-sub { max-width: 600px; margin-inline: auto; font-size: 1.05rem; }
+.hero-cta, .hero-badge { justify-content: center; }
+.hero-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; margin: 0 0 2rem; animation: fadeUp .8s .52s ease both; }
+.hero-chips span {
+  padding: .4rem 1rem; border-radius: 999px; font-size: .8rem; font-weight: 500;
+  background: rgba(14, 11, 10, .6); border: 1px solid rgba(245, 165, 36, .35); color: var(--cream);
+}
+/* selo e ícones decorativos flutuam nas laterais, fora do texto */
+.hero-visual { position: absolute; inset: 0; min-height: 0; pointer-events: none; }
+.hero-visual .promo-seal { top: 4%; right: 0; }
+@media (max-width: 1000px) { .hero-visual { display: none; } }
+
+/* ---------- Features ---------- */
+.features {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 1.5rem; margin-top: -2.5rem; position: relative; z-index: 2; box-shadow: var(--shadow);
+}
+.feature { display: flex; align-items: center; gap: .8rem; }
+.feature + .feature { border-left: 1px solid var(--line); padding-left: 1rem; }
+.f-ico { font-size: 1.8rem; transition: transform .4s; }
+.feature:hover .f-ico { transform: scale(1.2) rotate(-10deg); }
+.feature h4 { font-size: .82rem; text-transform: uppercase; letter-spacing: .5px; }
+.feature p { font-size: .76rem; color: var(--muted); }
+
+/* ---------- Seções ---------- */
+.section { padding: 4.5rem 0 0; }
+.section-head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 1.8rem; gap: 1rem; flex-wrap: wrap; }
+.section-head.center { justify-content: center; text-align: center; }
+.section-head h2 { font-family: var(--font-title); font-weight: 400; font-size: clamp(2rem, 4vw, 2.8rem); letter-spacing: 1px; line-height: 1; }
+.link-arrow { font-size: .85rem; font-weight: 600; text-transform: uppercase; color: var(--muted); transition: color .3s, gap .3s; }
+.link-arrow:hover { color: var(--gold); }
+
+/* ---------- Cards de pizza ---------- */
+.pizza-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1.2rem; }
+/* Animação 03 — Elevar no hover + 24 — Inclinar em 3D (via JS) */
+.pizza-card {
+  position: relative; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 1rem 1rem 1.2rem; text-align: center;
+  transition: opacity .7s ease, transform .35s ease, box-shadow .35s ease, border-color .35s;
+  transform-style: preserve-3d;
+}
+.pizza-card:hover { box-shadow: 0 25px 45px rgba(0, 0, 0, .55); border-color: rgba(245, 165, 36, .4); }
+.pizza-card .p-img { width: 78%; aspect-ratio: 1; margin: .6rem auto 1rem; border-radius: 50%; overflow: hidden; background: radial-gradient(#3a2a22, #1a1210); box-shadow: 0 15px 30px rgba(0, 0, 0, .5); }
+.pizza-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s ease; }
+.pizza-card:hover img { transform: rotate(25deg) scale(1.08); }
+.tag { position: absolute; top: 12px; left: 12px; font-size: .68rem; font-weight: 700; text-transform: uppercase; padding: .2rem .6rem; border-radius: 6px; background: var(--red); }
+.tag.veggie { background: var(--basil); }
+.tag.gold { background: var(--gold); color: #1a1008; }
+.pizza-card h3 { font-size: 1rem; text-transform: uppercase; letter-spacing: .5px; }
+.pizza-card p { font-size: .8rem; color: var(--muted); min-height: 2.6em; margin: .3rem 0 .8rem; }
+.price { font-family: var(--font-title); font-size: 1.7rem; color: var(--gold); letter-spacing: 1px; }
+.price small { font-family: var(--font-body); font-size: .7rem; color: var(--muted); letter-spacing: 0; margin-right: .3rem; }
+
+/* ---------- Combos (Animação 23 — Card que vira) ---------- */
+.combos {
+  display: grid; grid-template-columns: 1fr 2.2fr; gap: 2rem; align-items: center;
+  padding: 2rem; border-radius: var(--radius); border: 1px solid var(--line);
+  /* Animação 20 — Gradiente vivo */
+  background: linear-gradient(120deg, #1c1513, #2a1512 45%, #2b1d0e);
+}
+.combos-intro h2 { font-family: var(--font-title); font-weight: 400; font-size: 2.4rem; line-height: 1; margin-bottom: .6rem; }
+.combos-intro p { color: var(--muted); font-size: .9rem; margin-bottom: 1.2rem; }
+.combo-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.flip { perspective: 1000px; height: 210px; }
+.flip-inner { position: relative; width: 100%; height: 100%; transition: transform .7s cubic-bezier(.4, .2, .2, 1); transform-style: preserve-3d; }
+.flip:hover .flip-inner, .flip:focus-within .flip-inner { transform: rotateY(180deg); }
+.flip-front, .flip-back {
+  position: absolute; inset: 0; backface-visibility: hidden; border-radius: 14px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 1rem;
+  border: 1px solid var(--line);
+}
+.flip-front { background: rgba(0, 0, 0, .35); }
+.flip-back { background: linear-gradient(135deg, var(--red), var(--red-dark)); transform: rotateY(180deg); gap: 1rem; }
+.flip-back p { font-size: .88rem; }
+.combo h4 { font-size: .9rem; text-transform: uppercase; margin-top: .4rem; }
+.combo small { color: var(--muted); font-size: .72rem; }
+.combo strong { font-family: var(--font-title); font-size: 2rem; color: var(--gold); font-weight: 400; }
+
+/* ---------- Categorias ---------- */
+.cats { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; }
+.cat { display: flex; flex-direction: column; align-items: center; gap: .7rem; font-weight: 600; font-size: .85rem; text-transform: uppercase; }
+.cat span {
+  width: 110px; height: 110px; border-radius: 50%; display: grid; place-items: center; font-size: 3rem;
+  background: radial-gradient(circle at 35% 30%, #3a2a22, var(--card));
+  border: 2px solid var(--line); transition: all .4s cubic-bezier(.2, 1.4, .4, 1);
+}
+.cat:hover span { border-color: var(--red); transform: translateY(-8px) scale(1.06); box-shadow: 0 15px 35px rgba(230, 58, 46, .3); }
+.cat:hover { color: var(--gold); }
+
+/* ---------- Sobre ---------- */
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); }
+.about-img { position: relative; min-height: 420px; }
+.about-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.about-overlay { position: relative; height: 100%; padding: 2.5rem; background: linear-gradient(90deg, rgba(10, 7, 6, .95) 30%, rgba(10, 7, 6, .4)); display: flex; flex-direction: column; justify-content: center; }
+.about-overlay p { color: var(--muted); font-size: .9rem; max-width: 330px; }
+.eyebrow { color: var(--red) !important; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; font-size: .78rem !important; }
+.about-overlay h3 { font-family: var(--font-title); font-weight: 400; font-size: 2.3rem; line-height: 1; margin: .5rem 0 1rem; }
+.why { background: var(--card); padding: 2.5rem; }
+.why h3 { font-family: var(--font-title); font-weight: 400; font-size: 2.2rem; margin-bottom: 1.5rem; }
+.why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+.why-item span { width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--red); display: grid; place-items: center; font-size: 1.4rem; margin-bottom: .5rem; transition: transform .5s; }
+.why-item:hover span { transform: rotateY(360deg); background: rgba(230, 58, 46, .15); }
+.why-item h4 { font-size: .9rem; }
+.why-item p { font-size: .8rem; color: var(--muted); }
+.counters { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--line); text-align: center; }
+.counters strong { font-family: var(--font-title); font-weight: 400; font-size: 2.4rem; color: var(--gold); display: block; line-height: 1; }
+.counters span { font-size: .75rem; color: var(--muted); }
+
+/* ---------- Depoimentos ---------- */
+.testimonials .marquee-track { gap: 1.2rem; padding: .5rem 0; }
+.testi { white-space: normal; width: 320px; flex-shrink: 0; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.4rem; }
+.testi p { font-size: .92rem; margin-bottom: .8rem; }
+.testi span { color: var(--gold); font-size: .82rem; font-weight: 600; }
+
+/* ---------- Newsletter ---------- */
+.newsletter {
+  margin-top: 4.5rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 2rem 2.5rem;
+}
+.newsletter h3 { font-family: var(--font-title); font-weight: 400; font-size: 2rem; line-height: 1; }
+.newsletter p { color: var(--muted); font-size: .88rem; }
+.news-form { display: flex; flex: 1; max-width: 480px; background: var(--cream); border-radius: 999px; padding: .3rem; }
+.news-form input { flex: 1; border: 0; background: none; padding: 0 1.2rem; font: inherit; outline: none; color: #222; min-width: 0; }
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 1000px) {
+  .features { grid-template-columns: repeat(3, 1fr); }
+  .feature:nth-child(4) { border-left: 0; padding-left: 0; }
+  .combos { grid-template-columns: 1fr; }
+  .cats { grid-template-columns: repeat(3, 1fr); }
+  .about { grid-template-columns: 1fr; }
+}
+@media (max-width: 800px) {
+  .hero-grid { grid-template-columns: 1fr; text-align: center; }
+  .hero-sub { margin-inline: auto; }
+  .hero-cta, .hero-badge { justify-content: center; }
+  .hero::before { background-position: 60% 70%; }
+  .hero::after {
+    background: linear-gradient(180deg, rgba(14, 11, 10, .55) 0%, rgba(14, 11, 10, .85) 45%, var(--bg) 100%);
+  }
+  .hero-visual { display: none; }
+  .promo-seal { width: 85px; height: 85px; }
+  .promo-seal strong { font-size: 1.8rem; }
+  .features { grid-template-columns: 1fr 1fr; margin-top: 1.5rem; }
+  .feature + .feature { border-left: 0; padding-left: 0; }
+  .combo-list { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .cats { grid-template-columns: repeat(2, 1fr); }
+  .cat span { width: 90px; height: 90px; font-size: 2.4rem; }
+  .why-grid, .counters { grid-template-columns: 1fr 1fr; }
+  .newsletter { padding: 1.5rem; }
+}
+
+/* =========================================================
+   Hero: conteúdo mais alto e centralizado em qualquer tela
+   (monitor, notebook, tablet e celular)
+   ========================================================= */
+.hero {
+  min-height: clamp(520px, 78vh, 720px);
+  align-items: start;
+  padding: clamp(2.5rem, 7vh, 5rem) 0 clamp(5rem, 10vh, 7rem);
+  text-align: center;
+}
+.hero .container, .hero-grid { width: min(1200px, 92%); margin-inline: auto; }
+.hero-grid { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+.hero-text { width: 100%; max-width: 860px; margin-inline: auto; display: flex; flex-direction: column; align-items: center; }
+.hero-title { text-align: center; }
+.hero-sub { margin-inline: auto; text-align: center; }
+.hero-cta { justify-content: center; }
+
+/* Notebook (telas mais baixas): sobe um pouco mais */
+@media (max-height: 800px) and (min-width: 1001px) {
+  .hero { padding-top: 2rem; min-height: clamp(480px, 72vh, 640px); }
+  .hero-title { font-size: clamp(3rem, 6vw, 5rem); }
+}
+/* Tablet */
+@media (max-width: 800px) {
+  .hero { min-height: auto; padding: 2.5rem 0 5.5rem; }
+  .hero-title { font-size: clamp(2.8rem, 10vw, 4.4rem); }
+  .hero-sub { font-size: 1rem; }
+}
+/* Celular */
+@media (max-width: 480px) {
+  .hero { padding: 2rem 0 5rem; }
+  .hero-title { font-size: clamp(2.2rem, 10.5vw, 3rem); letter-spacing: .5px; }
+  .script { font-size: 1.2rem; }
+  .hero-cta { flex-direction: column; align-items: stretch; width: 100%; max-width: 320px; }
+  .hero-cta .btn { justify-content: center; }
+}
+
+/* ---------- Barra do topo flutuando sobre a foto ---------- */
+.hero { padding-top: calc(92px + clamp(1.5rem, 5vh, 3.5rem)); }
+.hero::after {
+  background:
+    linear-gradient(180deg, rgba(14, 11, 10, .75) 0%, rgba(14, 11, 10, 0) 26%),
+    radial-gradient(ellipse at center, rgba(14, 11, 10, .72) 0%, rgba(14, 11, 10, .55) 55%, rgba(14, 11, 10, .75) 100%),
+    linear-gradient(180deg, rgba(14, 11, 10, .3) 0%, transparent 30%, transparent 70%, var(--bg) 100%);
+}
+@media (max-width: 900px) { .hero { padding-top: calc(76px + 2rem); } }
+
+/* Mais respiro entre a primeira tela e a seção de pizzas populares */
+#populares { padding-top: clamp(12rem, 30vh, 20rem); }
+
+/* ---------- Pizzas populares: painéis que expandem ---------- */
+.pizza-panels { display: flex; gap: 10px; width: 100%; height: 440px; }
+.pizza-panels .p {
+  position: relative; flex: 1; min-width: 0; overflow: hidden; cursor: pointer;
+  border-radius: 18px; border: 1px solid var(--line); background: var(--card);
+  transition: flex .55s cubic-bezier(.16, 1, .3, 1), border-color .4s;
+}
+.pizza-panels .p > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .8s ease; }
+.pizza-panels .p::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(14, 11, 10, .15) 0%, rgba(14, 11, 10, .35) 45%, rgba(14, 11, 10, .92) 100%);
+}
+.pizza-panels .p.aberto { flex: 4.5; border-color: rgba(245, 165, 36, .55); }
+.pizza-panels .p.aberto > img { transform: scale(1.04); }
+.pizza-panels .p:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+/* nome na vertical quando o painel está fechado */
+.pizza-panels .rot {
+  position: absolute; z-index: 1; left: 50%; bottom: 22px; transform: translateX(-50%);
+  writing-mode: vertical-rl; rotate: 180deg; white-space: nowrap;
+  font-family: var(--font-title); font-size: 1.5rem; letter-spacing: 1.5px; text-transform: uppercase;
+  color: #fff; text-shadow: 0 2px 12px rgba(0, 0, 0, .8); transition: opacity .25s;
+}
+.pizza-panels .p.aberto .rot { opacity: 0; }
+/* conteúdo aparece só no painel aberto */
+.pizza-panels .info {
+  position: absolute; z-index: 1; left: 0; right: 0; bottom: 0; padding: 1.6rem;
+  display: flex; flex-direction: column; align-items: flex-start; gap: .35rem;
+  opacity: 0; transform: translateY(14px); pointer-events: none;
+  transition: opacity .3s ease, transform .3s ease;
+}
+.pizza-panels .p.aberto .info { opacity: 1; transform: none; pointer-events: auto; transition-delay: .2s; }
+.pizza-panels .info .tag { position: static; }
+.pizza-panels .info h3 { font-family: var(--font-title); font-weight: 400; font-size: 2.2rem; letter-spacing: 1px; line-height: 1; text-transform: uppercase; }
+.pizza-panels .info p { font-size: .88rem; color: #e6dacd; max-width: 380px; min-height: 0; margin: 0 0 .3rem; }
+.pizza-panels .info .price { font-size: 1.8rem; line-height: 1; margin-bottom: .6rem; }
+.pizza-panels .info .price small { display: block; margin: 0 0 .15rem; }
+/* celular e tablet: painéis empilhados, um aberto por vez */
+@media (max-width: 800px) {
+  .pizza-panels { flex-direction: column; height: 560px; }
+  .pizza-panels .rot { writing-mode: horizontal-tb; rotate: none; left: 1.2rem; bottom: 50%; transform: translateY(50%); font-size: 1.3rem; }
+  .pizza-panels .p.aberto { flex: 5; }
+  .pizza-panels .info { padding: 1.2rem; }
+  .pizza-panels .info h3 { font-size: 1.8rem; }
+}
+
+/* ---------- (regras antigas da grade, sem uso) ---------- */
+.pizza-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1rem; }
+.pizza-card { padding: .9rem .8rem 1rem; }
+.pizza-card h3 { font-size: .88rem; }
+.pizza-card p { font-size: .74rem; }
+.pizza-card .price { font-size: 1.45rem; }
+.pizza-card .price small { display: block; margin: 0; }
+.pizza-card .btn { padding: .5rem .6rem; font-size: .76rem; }
+/* telas menores: continua em uma linha, com rolagem lateral */
+@media (max-width: 1100px) {
+  .pizza-grid {
+    grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 210px;
+    overflow-x: auto; scroll-snap-type: x mandatory; padding: .5rem .2rem 1rem;
+    scrollbar-width: thin; scrollbar-color: var(--red) transparent;
+  }
+  .pizza-grid .pizza-card { scroll-snap-align: start; }
+}
+
+/* Mais respiro entre as pizzas populares e os combos */
+#combos { padding-top: clamp(9rem, 22vh, 15rem); }
+
+/* ---------- Cards dos combos: distribuição das informações ---------- */
+.flip { height: 230px; }
+.flip-front, .flip-back { padding: 1.4rem 1rem; justify-content: space-between; }
+/* frente: nome no alto, preço embaixo */
+.combo h4 {
+  margin: 0; font-family: var(--font-title); font-weight: 400; font-size: 1.55rem;
+  letter-spacing: 1px; line-height: 1.1; text-transform: uppercase;
+}
+.combo h4::after { content: ""; display: block; width: 36px; height: 3px; margin: .7rem auto 0; border-radius: 3px; background: var(--red); }
+.combo small { margin-top: auto; font-size: .72rem; letter-spacing: .5px; text-transform: uppercase; }
+.combo strong { line-height: 1; font-size: 2.3rem; }
+/* verso: descrição centralizada, botão embaixo */
+.flip-back { gap: 0; }
+.flip-back p { flex: 1; display: flex; align-items: center; line-height: 1.5; }
+.flip-back .btn { margin-top: .8rem; }
+
+/* ---------- Combos: cards simples, tudo visível ---------- */
+.combo-list { align-items: stretch; }
+.combo {
+  position: relative; display: flex; flex-direction: column; text-align: left;
+  padding: 1.5rem 1.4rem 1.4rem; border-radius: 16px;
+  background: rgba(14, 11, 10, .55); border: 1px solid var(--line);
+  transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+.combo:hover { transform: translateY(-6px); border-color: rgba(245, 165, 36, .5); box-shadow: 0 18px 35px rgba(0, 0, 0, .45); }
+.combo.destaque { border-color: rgba(230, 58, 46, .7); background: linear-gradient(160deg, rgba(230, 58, 46, .18), rgba(14, 11, 10, .55)); }
+.combo-tag { font-size: .7rem; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--gold); margin-bottom: .6rem; }
+.combo.destaque .combo-tag { color: #ff8a7f; }
+.combo h4 {
+  margin: 0 0 .6rem; font-family: var(--font-title); font-weight: 400; font-size: 1.8rem;
+  letter-spacing: 1px; line-height: 1.05; text-transform: uppercase; color: var(--cream);
+}
+.combo h4::after { display: none; }
+.combo p { flex: 1; margin: 0 0 1.2rem; color: var(--muted); font-size: .86rem; line-height: 1.55; }
+.combo-foot {
+  display: flex; align-items: flex-end; justify-content: space-between; gap: .8rem;
+  padding-top: 1rem; border-top: 1px dashed rgba(255, 244, 230, .15);
+}
+.combo-price small { display: block; margin: 0 0 .1rem; font-size: .68rem; letter-spacing: .5px; text-transform: uppercase; color: var(--muted); }
+.combo-price strong { display: block; font-family: var(--font-title); font-weight: 400; font-size: 2.1rem; line-height: 1; color: var(--gold); }
+.combo-foot .btn { flex-shrink: 0; }
+@media (max-width: 1100px) and (min-width: 801px) { .combo-list { grid-template-columns: 1fr; } }
+
+/* Mais respiro entre os combos e o "Sobre nós" */
+#sobre { padding-top: clamp(9rem, 21vh, 14rem); }
+
+/* ---------- Sobre nós: visual profissional (sem emojis) ---------- */
+.about { border-color: rgba(255, 244, 230, .1); }
+.about-overlay { padding: 3rem; background: linear-gradient(90deg, rgba(10, 7, 6, .96) 35%, rgba(10, 7, 6, .35)); }
+.about-overlay .eyebrow {
+  display: flex; align-items: center; gap: .8rem; max-width: none; margin-bottom: .2rem;
+  color: var(--gold) !important; letter-spacing: 3px;
+}
+.about-overlay h3 { font-size: 2.6rem; line-height: 1.02; margin: .7rem 0 1.1rem; }
+.about-overlay p { line-height: 1.7; max-width: 360px; color: #cfc3b7; }
+.about-sign {
+  margin-top: 1.4rem; padding-top: 1rem; border-top: 1px solid rgba(255, 244, 230, .18);
+  font-size: .72rem !important; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold) !important; max-width: 200px !important;
+}
+
+.why { padding: 3rem; display: flex; flex-direction: column; justify-content: center; }
+.why h3 { font-size: 2.4rem; line-height: 1; margin-bottom: 1.8rem; }
+.why-grid { gap: 1.6rem 2rem; }
+.why-item { padding-top: 1rem; border-top: 1px solid rgba(255, 244, 230, .12); transition: border-color .3s; }
+.why-item:hover { border-top-color: var(--red); }
+.why-item span {
+  width: auto; height: auto; border: 0; border-radius: 0; display: block; margin: 0 0 .4rem;
+  font-family: var(--font-title); font-size: 1.5rem; letter-spacing: 2px; line-height: 1; color: var(--gold);
+}
+.why-item:hover span { transform: none; background: none; }
+.why-item h4 { font-size: 1rem; margin-bottom: .2rem; }
+.why-item p { font-size: .84rem; line-height: 1.55; }
+.counters { margin-top: 2.2rem; padding-top: 1.6rem; text-align: left; }
+.counters > div + div { padding-left: 1rem; border-left: 1px solid rgba(255, 244, 230, .12); }
+.counters strong { font-size: 2.6rem; }
+.counters span { display: block; margin-top: .3rem; font-size: .74rem; letter-spacing: .5px; text-transform: uppercase; }
+@media (max-width: 480px) { .about-overlay, .why { padding: 1.8rem 1.4rem; } .why-grid { grid-template-columns: 1fr; } .counters { grid-template-columns: 1fr; } .counters > div + div { padding-left: 0; border-left: 0; } }
+
+/* Mais respiro entre "Sobre nós" e os depoimentos */
+#depoimentos { padding-top: clamp(9rem, 21vh, 14rem); }

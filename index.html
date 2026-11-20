@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pizzaria Real · Pizza artesanal de forno a lenha</title>
+  <meta name="description" content="Pizzaria Real: pizzas artesanais de forno a lenha, entrega em 40 minutos. Peça pelo WhatsApp.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container">
+      <a href="#inicio" class="logo">
+        <img src="img/logo.png" alt="Pizzaria Real" class="logo-img" width="720" height="474">
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#inicio" class="active">Início</a>
+        <a href="#populares">Populares</a>
+        <a href="#combos">Combos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <div class="header-actions">
+        <a href="cardapio.html" class="btn btn-red btn-sm shine">Fazer pedido →</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero-embers" aria-hidden="true"></div>
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <p class="script">Do forno para a sua mesa.</p>
+        <h1 class="hero-title">
+          <span class="line"><span>PIZZA DE <span class="hl-red">VERDADE,</span></span></span>
+          <span class="line"><span>FEITA PRA VOCÊ!</span></span>
+        </h1>
+        <p class="hero-sub">Borda crocante, queijo esticando e aquele cheirinho de forno a lenha que você já conhece.</p>
+        <div class="hero-cta">
+          <a href="cardapio.html" class="btn btn-red shine ripple">Ver cardápio</a>        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+              </div>
+    </div>
+  </section>
+
+  <!-- POPULARES -->
+  <section class="section" id="populares">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>PIZZAS <span class="hl">POPULARES</span></h2>
+        <a href="cardapio.html" class="btn btn-red btn-sm shine">Ver cardápio completo →</a>
+      </div>
+      <div class="pizza-panels reveal" id="popularGrid"><!-- gerado via JS --></div>
+    </div>
+  </section>
+
+  <!-- COMBOS -->
+  <section class="section" id="combos">
+    <div class="container">
+      <div class="combos reveal">
+        <div class="combos-intro">
+          <h2>COMBOS <span class="hl">ECONÔMICOS!</span></h2>
+          <p>Mais sabor, menos gasto. Escolha seu combo e monte do seu jeito no cardápio.</p>
+          <a href="cardapio.html" class="btn btn-red btn-sm shine">Montar meu combo</a>
+        </div>
+        <div class="combo-list">
+          <article class="combo">
+            <span class="combo-tag">Combo 01</span>
+            <h4>Grande + Refri 2L</h4>
+            <p>Qualquer pizza tradicional grande + guaraná 2L.</p>
+            <div class="combo-foot">
+              <div class="combo-price"><small>a partir de</small><strong>R$ 64,90</strong></div>
+              <a href="cardapio.html" class="btn btn-gold btn-sm">Quero esse</a>
+            </div>
+          </article>
+          <article class="combo destaque">
+            <span class="combo-tag">Combo 02 · Mais pedido</span>
+            <h4>2 Grandes</h4>
+            <p>Duas pizzas grandes tradicionais.</p>
+            <div class="combo-foot">
+              <div class="combo-price"><small>a partir de</small><strong>R$ 99,90</strong></div>
+              <a href="cardapio.html" class="btn btn-gold btn-sm">Quero esse</a>
+            </div>
+          </article>
+          <article class="combo">
+            <span class="combo-tag">Combo 03</span>
+            <h4>Família + Doce + Refri</h4>
+            <p>Pizza família salgada + broto doce + refrigerante 2L.</p>
+            <div class="combo-foot">
+              <div class="combo-price"><small>a partir de</small><strong>R$ 119,90</strong></div>
+              <a href="cardapio.html" class="btn btn-gold btn-sm">Quero esse</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE + POR QUE -->
+  <section class="section" id="sobre">
+    <div class="container about">
+      <div class="about-img reveal-left">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=70" alt="Salão da pizzaria">
+        <div class="about-overlay">
+          <p class="eyebrow">Sobre nós</p>
+          <h3>FEITA COM PAIXÃO,<br>SERVIDA COM AMOR.</h3>
+          <p>Desde 2014 a Pizzaria Real leva pizza de verdade para a mesa da família. Da nossa cozinha até a sua porta, cada fatia é preparada com cuidado.</p>
+          <p class="about-sign">Equipe Pizzaria Real</p>
+        </div>
+      </div>
+      <div class="why reveal-right">
+        <h3>POR QUE <span class="hl">NOS ESCOLHER?</span></h3>
+        <div class="why-grid">
+          <div class="why-item"><span>01</span><h4>Higiene total</h4><p>Cozinha aberta e padrões rígidos.</p></div>
+          <div class="why-item"><span>02</span><h4>Sempre quentinha</h4><p>Embalagem térmica premium.</p></div>
+          <div class="why-item"><span>03</span><h4>Preço justo</h4><p>Combos que cabem no bolso.</p></div>
+          <div class="why-item"><span>04</span><h4>Amada por milhares</h4><p>Clientes fiéis todo fim de semana.</p></div>
+        </div>
+        <div class="counters">
+          <div><strong class="counter" data-target="10">0</strong><span>Anos de forno</span></div>
+          <div><strong class="counter" data-target="48">0</strong><span>Horas de fermentação</span></div>
+          <div><strong class="counter" data-target="25000" data-suffix="+">0</strong><span>Pizzas por ano</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section class="section" id="depoimentos">
+    <div class="container">
+      <div class="section-head reveal center">
+        <h2>O QUE DIZEM <span class="hl">NOSSOS CLIENTES</span></h2>
+      </div>
+    </div>
+    <div class="marquee testimonials">
+      <div class="marquee-track slow">
+        <!-- conteúdo duplicado via JS para loop perfeito -->
+        <div class="testi"><p>"Melhor massa da cidade, sem exagero. A Nero da Casa é outro nível!"</p><span>★★★★★ · Mariana S.</span></div>
+        <div class="testi"><p>"Chegou quentinha em 30 minutos. A borda de cheddar é viciante."</p><span>★★★★★ · Rafael T.</span></div>
+        <div class="testi"><p>"Pedido pelo WhatsApp super prático, veio tudo certinho."</p><span>★★★★★ · Juliana P.</span></div>
+        <div class="testi"><p>"A de costela BBQ virou tradição de sexta aqui em casa."</p><span>★★★★★ · Bruno L.</span></div>
+        <div class="testi"><p>"Atendimento excelente e preço justo. Recomendo demais!"</p><span>★★★★★ · Camila R.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER / CTA -->
+  <section class="container">
+    <div class="newsletter reveal">
+      <div>
+        <h3>FIQUE POR <span class="hl">DENTRO!</span></h3>
+        <p>Receba cupons e promoções exclusivas no seu e-mail.</p>
+      </div>
+      <form class="news-form" id="newsForm">
+        <input type="email" placeholder="Seu melhor e-mail" required>
+        <button class="btn btn-gold shine" type="submit">Inscrever</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="contato">
+    <div class="container footer-grid">
+      <div>
+        <a href="#inicio" class="logo">
+          <img src="img/logo.png" alt="Pizzaria Real" class="logo-img" width="720" height="474">
+        </a>
+        <p style="margin-top:1rem">Pizza artesanal de forno a lenha, feita com ingredientes frescos e muito amor.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 4.8a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-9.6a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 9V7c0-.9.6-1 1-1h3V2h-4c-3.3 0-4 2.4-4 4v3H7v4h3v9h4v-9h3.5l.5-4h-4z"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.5 2h-3.3v13.4a2.9 2.9 0 11-2.9-2.9c.3 0 .6 0 .9.1V9.2a6.2 6.2 0 105.3 6.2V8.7a7.7 7.7 0 004.5 1.4V6.8a4.5 4.5 0 01-4.5-4.8z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="cardapio.html">Cardápio</a></li>
+          <li><a href="#combos">Combos</a></li>
+          <li><a href="#sobre">Sobre nós</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Cardápio</h4>
+        <ul>
+          <li><a href="cardapio.html#tradicional">Tradicionais</a></li>
+          <li><a href="cardapio.html#especial">Especiais</a></li>
+          <li><a href="cardapio.html#premium">Premium</a></li>
+          <li><a href="cardapio.html#doce">Doces</a></li>
+          <li><a href="cardapio.html#bebidas">Bebidas</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li>📍 Rua das Oliveiras, 450 · Centro</li>
+          <li>🕐 <span class="js-horario"></span></li>
+          <li>📞 <a class="js-wa-link" href="#" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span id="ano"></span> Pizzaria Real · Empresa fictícia para fins de demonstração.</span>
+      <div class="pay-badges"><span>PIX</span><span>VISA</span><span>MASTER</span><span>ELO</span></div>
+    </div>
+  </footer>
+
+  <a class="wa-float js-wa-link" href="#" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1112 21.8zM12 0a12 12 0 00-10.3 18L0 24l6.2-1.6A12 12 0 1012 0z"/></svg>
+  </a>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/dados.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

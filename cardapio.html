@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cardápio · Pizzaria Real</title>
+  <meta name="description" content="Monte sua pizza: escolha tamanho, sabores, borda e bebida. Envie o pedido direto pelo WhatsApp.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/cardapio.css">
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="img/logo.png" alt="Pizzaria Real" class="logo-img" width="720" height="474">
+      </a>
+      <nav class="nav" id="nav">
+        <a href="index.html">Início</a>
+        <a href="#montar" class="active">Montar pizza</a>
+        <a href="#bebidas">Bebidas</a>
+      </nav>
+      <div class="header-actions">
+        <button class="cart-btn" id="cartOpen" aria-label="Abrir carrinho">
+          🛒 <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="menu-hero">
+    <div class="container">
+      <p class="script">Do forno direto pra você</p>
+      <h1>NOSSO <span class="hl-red">CARDÁPIO</span></h1>
+      <p class="muted">Monte sua pizza em 3 passos, adicione bebidas e envie o pedido pelo WhatsApp.</p>
+      <div class="hours" id="statusLoja"></div>
+    </div>
+  </section>
+
+  <main class="container menu-layout">
+    <div class="menu-main">
+      <div class="aviso-fechado" id="avisoFechado" role="status" hidden>
+        <strong>Estamos fechados no momento.</strong>
+        <span>Nosso horário de atendimento: <span class="js-horario"></span>. Volte nesse horário para fazer seu pedido.</span>
+      </div>
+
+      <!-- MONTADOR DE PIZZA -->
+      <section class="builder" id="montar">
+        <div class="steps-bar">
+          <div class="progress"><span id="progressFill"></span></div>
+          <div class="steps-labels">
+            <span class="step-dot active" data-step="1">1 · Tamanho</span>
+            <span class="step-dot" data-step="2">2 · Sabores</span>
+            <span class="step-dot" data-step="3">3 · Borda</span>
+          </div>
+        </div>
+
+        <!-- Passo 1 -->
+        <div class="step" id="step1">
+          <h2 class="step-title"><span>1</span> Escolha o tamanho</h2>
+          <div class="sizes" id="sizes"></div>
+        </div>
+
+        <!-- Passo 2 -->
+        <div class="step" id="step2">
+          <h2 class="step-title"><span>2</span> Escolha os sabores <small id="flavorHint"></small></h2>
+          <div class="tabs" id="tabs">
+            <button class="tab active" data-cat="todas">Todas</button>
+            <button class="tab" data-cat="tradicional" id="tradicional">Tradicionais</button>
+            <button class="tab" data-cat="especial" id="especial">Especiais</button>
+            <button class="tab" data-cat="premium" id="premium">Premium</button>
+            <button class="tab" data-cat="doce" id="doce">Doces</button>
+          </div>
+          <div class="flavors" id="flavors"></div>
+        </div>
+
+        <!-- Passo 3 -->
+        <div class="step" id="step3">
+          <h2 class="step-title" id="bordas"><span>3</span> Borda recheada</h2>
+          <div class="borders" id="borders"></div>
+          <label class="obs-label" for="pizzaObs">Observação desta pizza (opcional)</label>
+          <input class="input" id="pizzaObs" maxlength="120" placeholder="Ex.: sem cebola, bem assada...">
+        </div>
+
+        <!-- Resumo da pizza em montagem -->
+        <div class="pizza-preview" id="pizzaPreview">
+          <div class="mini-pizza" id="miniPizza"></div>
+          <div class="pp-info">
+            <strong id="ppTitle">Sua pizza</strong>
+            <small id="ppDesc">Escolha tamanho e sabores</small>
+          </div>
+          <div class="pp-price" id="ppPrice">R$ 0,00</div>
+          <button class="btn btn-red shine" id="addPizza" disabled>Adicionar ao pedido</button>
+        </div>
+      </section>
+
+      <!-- BEBIDAS -->
+      <section class="drinks-section" id="bebidas">
+        <h2 class="step-title">Bebidas</h2>
+        <div class="drinks" id="drinks"></div>
+      </section>
+    </div>
+
+    <!-- CARRINHO -->
+    <aside class="cart" id="cart" aria-label="Seu pedido">
+      <div class="cart-head">
+        <h3>SEU <span class="hl">PEDIDO</span></h3>
+        <button class="cart-close" id="cartClose" aria-label="Fechar carrinho">✕</button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-foot">
+        <div class="row"><span>Subtotal</span><span id="subtotal">R$ 0,00</span></div>
+        <div class="row"><span>Taxa de entrega</span><span id="taxa">R$ 0,00</span></div>
+        <div class="row total"><span>Total</span><span id="total">R$ 0,00</span></div>
+        <button class="btn btn-gold btn-block shine" id="goCheckout" disabled>Finalizar pedido →</button>
+        <button class="clear-cart" id="clearCart">Limpar carrinho</button>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Barra fixa mobile -->
+  <div class="mobile-bar" id="mobileBar">
+    <div><small><span id="mbCount">0</span> itens</small><strong id="mbTotal">R$ 0,00</strong></div>
+    <button class="btn btn-gold btn-sm" id="mbOpen">Ver pedido</button>
+  </div>
+  <div class="backdrop" id="backdrop"></div>
+
+  <!-- CHECKOUT -->
+  <div class="modal" id="checkout" role="dialog" aria-modal="true" aria-labelledby="ckTitle">
+    <div class="modal-box">
+      <button class="modal-close" id="ckClose" aria-label="Fechar">✕</button>
+      <h2 id="ckTitle">FINALIZAR <span class="hl">PEDIDO</span></h2>
+
+      <form id="ckForm" novalidate>
+        <fieldset>
+          <legend>Seus dados</legend>
+          <div class="grid-2">
+            <div class="field"><label for="nome">Nome *</label><input class="input" id="nome" name="nome" required autocomplete="name"></div>
+            <div class="field"><label for="tel">Telefone / WhatsApp *</label><input class="input" id="tel" name="tel" required inputmode="tel" placeholder="(11) 99999-9999" autocomplete="tel"></div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Entrega ou retirada</legend>
+          <div class="seg" id="tipoEntrega">
+            <label><input type="radio" name="tipo" value="entrega" checked><span>Entrega</span></label>
+            <label><input type="radio" name="tipo" value="retirada"><span>Retirar no balcão</span></label>
+          </div>
+
+          <div id="enderecoBox">
+            <div class="grid-3">
+              <div class="field"><label for="cep">CEP</label><input class="input" id="cep" name="cep" inputmode="numeric" placeholder="00000-000" maxlength="9"><small class="hint" id="cepHint"></small></div>
+              <div class="field span-2"><label for="rua">Rua *</label><input class="input" id="rua" name="rua" required autocomplete="address-line1"></div>
+            </div>
+            <div class="grid-3">
+              <div class="field"><label for="numero">Número *</label><input class="input" id="numero" name="numero" required></div>
+              <div class="field span-2"><label for="bairro">Bairro *</label><input class="input" id="bairro" name="bairro" required></div>
+            </div>
+            <div class="grid-2">
+              <div class="field"><label for="comp">Complemento</label><input class="input" id="comp" name="comp" placeholder="Apto, bloco..."></div>
+              <div class="field"><label for="ref">Ponto de referência</label><input class="input" id="ref" name="ref"></div>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Forma de pagamento</legend>
+          <div class="pay-options">
+            <label><input type="radio" name="pagamento" value="Pix" checked><span>Pix</span></label>
+            <label><input type="radio" name="pagamento" value="Cartão de crédito"><span>Crédito</span></label>
+            <label><input type="radio" name="pagamento" value="Cartão de débito"><span>Débito</span></label>
+            <label><input type="radio" name="pagamento" value="Dinheiro"><span>Dinheiro</span></label>
+          </div>
+          <div class="field" id="trocoBox" hidden>
+            <label for="troco">Troco para quanto?</label>
+            <input class="input" id="troco" name="troco" inputmode="decimal" placeholder="Ex.: 100 (deixe vazio se não precisar)">
+          </div>
+          <p class="hint" id="pixInfo"></p>
+          <p class="hint" id="cartaoInfo" hidden>A maquininha vai até você na entrega.</p>
+        </fieldset>
+
+        <fieldset>
+          <legend>Observações</legend>
+          <textarea class="input" id="obs" name="obs" rows="2" maxlength="300" placeholder="Algo mais que devemos saber?"></textarea>
+        </fieldset>
+
+        <div class="ck-summary" id="ckSummary"></div>
+
+        <button type="submit" class="btn btn-wa btn-block shine">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1112 21.8zM12 0a12 12 0 00-10.3 18L0 24l6.2-1.6A12 12 0 1012 0z"/></svg>
+          Enviar pedido pelo WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/dados.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/cardapio.js"></script>
+</body>
+</html>
