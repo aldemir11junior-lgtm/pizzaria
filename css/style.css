@@ -237,3 +237,7 @@ button { font-family: inherit; cursor: pointer; border: 0; }
 }
 .dev-credit img { height: 30px; width: auto; display: block; opacity: .85; transition: opacity .25s, transform .25s; }
 .dev-credit a:hover img { opacity: 1; transform: translateY(-2px); }
+
+/* Evita rolagem lateral no celular: nada pode ultrapassar a largura da tela */
+html, body { max-width: 100%; overflow-x: clip; }
+img, svg, video { max-width: 100%; }
