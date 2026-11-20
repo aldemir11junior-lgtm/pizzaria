@@ -229,3 +229,11 @@ button { font-family: inherit; cursor: pointer; border: 0; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal, .reveal-left, .reveal-right { opacity: 1; transform: none; }
 }
+
+/* Crédito do desenvolvedor no rodapé */
+.dev-credit {
+  display: flex; align-items: center; gap: .7rem;
+  color: var(--muted); font-size: .82rem;
+}
+.dev-credit img { height: 30px; width: auto; display: block; opacity: .85; transition: opacity .25s, transform .25s; }
+.dev-credit a:hover img { opacity: 1; transform: translateY(-2px); }

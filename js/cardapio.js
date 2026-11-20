@@ -456,7 +456,6 @@ function lojaAberta() {
 let aberta = true;
 function statusLoja() {
   aberta = lojaAberta();
-  $("#statusLoja").innerHTML = `<span class="dot ${aberta ? "" : "closed"}"></span>${aberta ? "Aberto agora" : "Fechado agora"} · ${CONFIG.horario}`;
   $(".menu-layout").classList.toggle("fechado", !aberta);
   $("#avisoFechado").hidden = aberta;
   $("#mobileBar").classList.toggle("show", aberta && cart.length > 0);
