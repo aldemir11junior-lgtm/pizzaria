@@ -297,3 +297,6 @@ body { padding-bottom: 0; }
 .pizza-preview { bottom: 12px; }
 .cart-items { overflow: visible; }
 .go-total { display: flex; justify-content: center; margin-top: 1.6rem; }
+
+/* Barra "Sua pizza" fixa no fim do passo 3, sem flutuar sobre a tela */
+.pizza-preview { position: static; bottom: auto; margin-top: 1.2rem; box-shadow: none; }
