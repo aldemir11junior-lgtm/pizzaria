@@ -462,3 +462,34 @@
   #populares, #combos, #sobre, #depoimentos { padding-top: clamp(4.5rem, 12vw, 6rem); }
   .section { padding-top: clamp(4.5rem, 12vw, 6rem); }
 }
+
+/* ---------- Celular: botão menor, título maior, foto menor, rodapé em 2 colunas ---------- */
+@media (max-width: 800px) {
+  /* foto de fundo menor (mostra mais da cena, como no notebook) */
+  .hero::before {
+    background: url("../img/p3.jpg") 62% 0 / auto 56% no-repeat;
+    background-color: var(--bg);
+  }
+  .hero::after {
+    background:
+      linear-gradient(180deg, rgba(14, 11, 10, .55) 0%, rgba(14, 11, 10, .15) 18%, rgba(14, 11, 10, .55) 40%, var(--bg) 62%);
+  }
+}
+@media (max-width: 480px) {
+  .hero-title { font-size: clamp(2.6rem, 12.5vw, 3.5rem); }
+  .hero-cta { flex-direction: row; align-items: center; width: auto; max-width: none; }
+  .hero-cta .btn { padding: .65rem 1.4rem; font-size: .85rem; }
+}
+@media (max-width: 560px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem 1.2rem; }
+  .footer-grid > :first-child, .footer-grid > :last-child { grid-column: 1 / -1; }
+}
+
+/* Celular: foto com altura fixa e fusão suave na base (sem borda dura) */
+@media (max-width: 800px) {
+  .hero { min-height: clamp(500px, 72svh, 620px); }
+  .hero::before { background-size: auto 440px; background-position: 62% 0; }
+  .hero::after {
+    background: linear-gradient(180deg, rgba(14, 11, 10, .55) 0, rgba(14, 11, 10, .12) 80px, rgba(14, 11, 10, .5) 250px, var(--bg) 440px);
+  }
+}

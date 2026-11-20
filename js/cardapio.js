@@ -290,7 +290,10 @@ $("#clearCart").addEventListener("click", () => {
 // Gaveta do carrinho no mobile
 const openCart = () => { $("#cart").classList.add("open"); $("#backdrop").classList.add("show"); };
 const closeCart = () => { $("#cart").classList.remove("open"); $("#backdrop").classList.remove("show"); };
-$("#cartOpen").addEventListener("click", () => (innerWidth <= 1000 ? openCart() : $("#cart").scrollIntoView({ behavior: "smooth" })));
+// O total fica no fim da página (depois de montar a pizza e escolher as bebidas): os botões só rolam até ele
+const irParaTotal = () => $("#cart").scrollIntoView({ behavior: "smooth", block: "start" });
+$("#cartOpen").addEventListener("click", irParaTotal);
+$("#goTotal").addEventListener("click", irParaTotal);
 $("#mbOpen").addEventListener("click", openCart);
 $("#cartClose").addEventListener("click", closeCart);
 $("#backdrop").addEventListener("click", closeCart);

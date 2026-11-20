@@ -283,3 +283,17 @@ legend { font-weight: 600; font-size: .95rem; margin-bottom: .7rem; }
 .aviso-fechado[hidden] { display: none; }
 .aviso-fechado strong { font-size: 1rem; color: #ff8a7f; }
 .aviso-fechado span { font-size: .86rem; color: var(--muted); }
+
+/* ---------- Fluxo em todas as telas: montar pizza -> bebidas -> total ---------- */
+.menu-layout { grid-template-columns: 1fr; gap: 1.5rem; }
+.cart {
+  position: static; top: auto; right: auto; bottom: auto; z-index: auto;
+  width: min(760px, 100%); max-height: none; margin: 0 auto;
+  transform: none; border-radius: var(--radius); transition: opacity .4s, filter .4s;
+}
+.cart-close { display: none !important; }
+.mobile-bar, .backdrop { display: none !important; }
+body { padding-bottom: 0; }
+.pizza-preview { bottom: 12px; }
+.cart-items { overflow: visible; }
+.go-total { display: flex; justify-content: center; margin-top: 1.6rem; }
