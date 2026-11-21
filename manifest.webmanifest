@@ -1,6 +1,6 @@
 {
-  "name": "Pizzaria Real",
-  "short_name": "Pizzaria Real",
+  "name": "Pizzaria",
+  "short_name": "Pizzaria",
   "description": "Peça sua pizza pelo WhatsApp: escolha tamanho, sabores, borda e bebidas.",
   "lang": "pt-BR",
   "start_url": "./index.html",

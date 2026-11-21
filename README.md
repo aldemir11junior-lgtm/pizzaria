@@ -1,4 +1,4 @@
-# Pizzaria Real
+# Pizzaria
 
 Landing page e cardápio online de uma pizzaria fictícia. O cliente monta o pedido (tamanho, sabores, borda e bebidas) e envia pelo WhatsApp.
 

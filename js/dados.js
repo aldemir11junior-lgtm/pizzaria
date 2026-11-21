@@ -2,12 +2,12 @@
    CONFIGURAÇÃO E DADOS DO CARDÁPIO — edite aqui!
    ========================================================= */
 const CONFIG = {
-  nome: "Pizzaria Real",
+  nome: "Pizzaria",
   // Número do WhatsApp que recebe os pedidos: DDI + DDD + número, só dígitos
   whatsapp: "5567996896426", // (67) 99689-6426 · número que recebe os pedidos (DDI 55 + DDD + número, só dígitos)
   taxaEntrega: 7.00,
   pedidoMinimo: 30.00,
-  chavePix: "pedidos@pizzariareal.com.br",
+  chavePix: "pedidos@pizzaria.com.br",
   horario: "Ter a Dom · 18h às 23h30",
   // Funcionamento (o cardápio fica apagado fora desse horário)
   // diasFechado: 0 = domingo, 1 = segunda ... 6 = sábado
